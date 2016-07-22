@@ -5,4 +5,4 @@ A rubygem that facilitates communication with Bjönd servers.
 
 == Development
 
-This gem is built using the <tt>echo<tt> gem[https://github.com/evan/echoe].
+This gem is built using the `echo` gem[https://github.com/evan/echoe].
