@@ -1,14 +1,15 @@
-require 'rubygems'
-require 'rake'
-require 'echoe'
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
+    gem.name = "bjond-integration-gem"
+    gem.summary = "Helper that facilitates communication with Bjönd servers."
+    gem.email = "blake.rego@bjondinc.com"
+    gem.homepage = "http://github.com/Bjond/bjond-integration-gem"
+    gem.authors = ["Blake Rego"]
+    gem.add_dependency 'faraday'
 
-Echoe.new('bjond-integration-gem', '0.1.0') do |p|
-  p.description    = "Helper that facilitates communication with Bjönd servers."
-  p.url            = "http://github.com/Bjond/bjond-integration-gem"
-  p.author         = "Blake Rego"
-  p.email          = "blake.rego@bjondinc.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = []
+  end
+rescue LoadError
+  puts "Jeweler, or one of its dependencies, is not available.  Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
-
-Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }

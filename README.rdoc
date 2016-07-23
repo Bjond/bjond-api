@@ -1,8 +1,8 @@
-== Bjönd Integration Gem
+= Bjönd Integration Gem
 
 A rubygem that facilitates communication with Bjönd servers.
 
 
 == Development
 
-This gem is built using the `echo` gem[https://github.com/evan/echoe].
+This gem is built using the `echoe` gem[https://github.com/evan/echoe].
