@@ -1,0 +1,5 @@
+require 'bjond-api'
+require 'bjond-app-definition'
+require 'bjond-consequence'
+require 'bjond-event'
+require 'bjond-field'
