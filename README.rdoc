@@ -1,8 +1,7 @@
-= Bjönd Integration Gem
+= Bjönd API
 
-A rubygem that facilitates communication with Bjönd servers.
+A rubygem wrapper for the Bjönd API.
 
+== Methods
 
-== Development
-
-This gem is built using the `echoe` gem[https://github.com/evan/echoe].
+- register_app
