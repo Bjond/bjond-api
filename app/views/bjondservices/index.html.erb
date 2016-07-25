@@ -1,0 +1,43 @@
+<h1 class="title" ng-controller="homeController">
+  Bjond App 2
+</h1>
+
+
+<div class="integration-app">
+  <h2>App Info</h2>
+
+  <div class="field-wrapper">
+    <h3><%= @app_info.name %></h3>
+  </div>
+  
+  <div class="field-wrapper">
+    <div class="app-label">ID:</div>
+    <div class="info"><%= @app_info.id %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">Author:</div>
+    <div class="info"><%= @app_info.author %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">Description</div>
+    <div class="info"><%= @app_info.description %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">Icon URL</div>
+    <div class="info"><%= @app_info.iconURL %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">Config URL</div>
+    <div class="info"><%= @app_info.configURL %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">Root Endpoint</div>
+    <div class="info"><%= @app_info.rootEndpoint %></div>
+  </div>
+
+</div>
