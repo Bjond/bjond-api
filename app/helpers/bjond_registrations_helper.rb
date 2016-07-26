@@ -1,0 +1,2 @@
+module BjondRegistrationsHelper
+end

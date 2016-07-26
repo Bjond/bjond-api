@@ -1,0 +1,25 @@
+<%= form_for(@bjond_registration) do |f| %>
+  <% if @bjond_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bjond_registration.errors.count, "error") %> prohibited this bjond_registration from being saved:</h2>
+
+      <ul>
+      <% @bjond_registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :server %><br>
+    <%= f.text_field :server %>
+  </div>
+  <div class="field">
+    <%= f.label :encryptionKey %><br>
+    <%= f.text_field :encryptionKey %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

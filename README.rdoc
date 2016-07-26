@@ -2,6 +2,14 @@
 
 A rubygem wrapper for the Bjönd API.
 
+This gem also contains an engine with endpoints that are made to interface with Bjond server-core.
+
+== Development
+
+To install necessary migrations, add this to your Rails' application.rb file - 
+
+    config.paths['db/migrate'] = BjondIntegration::Engine.paths['db/migrate'].existent
+
 == Methods
 
 - register_app

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bjond Registrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Server</th>
+      <th>Encryptionkey</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bjond_registrations.each do |bjond_registration| %>
+      <tr>
+        <td><%= bjond_registration.server %></td>
+        <td><%= bjond_registration.encryptionKey %></td>
+        <td><%= link_to 'Show', bjond_registration %></td>
+        <td><%= link_to 'Edit', edit_bjond_registration_path(bjond_registration) %></td>
+        <td><%= link_to 'Destroy', bjond_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bjond registration', new_bjond_registration_path %>

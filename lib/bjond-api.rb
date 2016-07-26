@@ -3,7 +3,7 @@ require 'bjond-consequence'
 require 'bjond-event'
 require 'bjond-field'
 require 'faraday'
-require 'engine'
+require 'bjond-app/engine'
 require 'bjond-app-config'
 
 module BjondIntegration

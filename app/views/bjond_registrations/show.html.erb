@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Server:</strong>
+  <%= @bjond_registration.server %>
+</p>
+
+<p>
+  <strong>Encryptionkey:</strong>
+  <%= @bjond_registration.encryptionKey %>
+</p>
+
+<%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
+<%= link_to 'Back', bjond_registrations_path %>
