@@ -1,7 +1,7 @@
 class BjondservicesController < ApplicationController 
 
   require 'bjond-api'
-  require 'jwt'
+  require 'syruppay_jose'
 
   skip_before_filter :verify_authenticity_token, :only => [:get_schema, :register_group_endpoint]
 
@@ -40,15 +40,15 @@ class BjondservicesController < ApplicationController
   private
     def jwt_encode_payload(json)
       payload = {
-        :data => json,
-        :issuer => 'Bjönd, Inc.',
+        :json => json,
+        :iss => 'Bjönd, Inc.',
         :aud => ENV['BJOND_ADAPTER_AUDIENCE'],
         :exp => Time.now.to_i + 10*3600,
         :nbf => Time.now.to_i - 2*3600,
         :sub => ENV['BJOND_ADAPTER_SUBJECT']
-      }
-      puts payload
-      JWT.encode(payload, 'N/IsBXgRxjzaTfcGpHA92w==', 'HS256')
+      }.to_json
+      header = {:alg => 'A128KW', :enc => 'A128CBC-HS256'}
+      return SyrupPay::JsonEncryptionCompactSerialization.serialization(Base64.decode64(ENV['BJOND_POKITDOK_ENCRYPTION_KEY']), header, payload)
     end
 
 end

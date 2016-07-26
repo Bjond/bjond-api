@@ -8,8 +8,7 @@ begin
     gem.homepage = "http://github.com/Bjond/bjond-integration-gem"
     gem.authors = ["Blake Rego"]
     gem.add_dependency 'faraday'
-    gem.add_dependency 'jwt'
-    gem.add_dependency 'jwe'
+    gem.add_dependency 'syruppay_jose'
   end
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available.  Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
