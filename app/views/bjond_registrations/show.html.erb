@@ -5,10 +5,21 @@
   <%= @bjond_registration.server %>
 </p>
 
-<p>
-  <strong>Encryptionkey:</strong>
-  <%= @bjond_registration.encryptionKey %>
-</p>
+
+<%- if (@bjond_registration.encryptionKey) %>
+  <div class="encryption-key-found">
+    <p>
+      <strong>Encryptionkey:</strong>
+      <%= @bjond_registration.encryptionKey %>
+    </p>
+  </div>
+<% else %>
+  <p class="not-found">
+    Please log in to the Bjond server and locate the encryption key. You must be a tenant administratior. You will find this information on the 'Develop' tab of the system settings. Once you find this information, <%= link_to 'add it here', edit_bjond_registration_path(@bjond_registrations_path) %>.
+  </p>
+
+<% end %>
+
 
 <%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
 <%= link_to 'Back', bjond_registrations_path %>

@@ -1,5 +1,25 @@
 <h1>New Bjond Registration</h1>
 
-<%= render 'form' %>
+<%= form_for(@bjond_registration) do |f| %>
+  <% if @bjond_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bjond_registration.errors.count, "error") %> prohibited this bjond_registration from being saved:</h2>
+
+      <ul>
+      <% @bjond_registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Enter server name (e.g. https://test.bjondhealth.com)
+    <%= f.text_field :server %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', bjond_registrations_path %>

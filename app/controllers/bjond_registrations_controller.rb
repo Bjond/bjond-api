@@ -21,7 +21,9 @@ class BjondRegistrationsController < ApplicationController
 
   # POST /bjond_registrations
   def create
-    @bjond_registration = BjondRegistration.new(bjond_registration_params)
+    require 'bjond-api'
+    @bjond_registration = BjondRegistration.find_or_initialize_by(bjond_registration_params)
+    BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition, @bjond_registration.server)
 
     if @bjond_registration.save
       redirect_to @bjond_registration, notice: 'Bjond registration was successfully created.'
