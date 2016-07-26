@@ -9,6 +9,7 @@ begin
     gem.authors = ["Blake Rego"]
     gem.add_dependency 'faraday'
     gem.add_dependency 'syruppay_jose'
+    gem.add_dependency 'attr_encrypted', "~> 3.0.0"
   end
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available.  Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
