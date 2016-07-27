@@ -6,11 +6,26 @@ This gem also contains an engine with endpoints that are made to interface with 
 
 == Development
 
+=== Migrations
+
 To install necessary migrations, add this to your Rails' application.rb file - 
 
     config.paths['db/migrate'] << BjondIntegration::Engine.paths['db/migrate'].existent
 
-- For security, the encryption keys stored from Bjond Server are themselves encrypted. Define the following environment variable: APP_ENCRYPTION_KEY. If you have multiple apps in your environment, you can modify the name of this constant using BjondIntegration::BjondAppConfig.instance.encryption_key_name. 
+At this point, you can run the migrations as usual using - 
+
+    rake db:migrate
+
+=== Encryption Key
+
+For security, the encryption keys stored from Bjond Server are themselves encrypted. Define the following environment variable: APP_ENCRYPTION_KEY. If you have multiple apps in your environment, you can modify the name of this constant using BjondIntegration::BjondAppConfig.instance.encryption_key_name. 
+
+
+=== Configuration Files
+
+To get you started, generate a config file by running the following command: 
+    
+    rails g initializer
 
 == Methods
 
