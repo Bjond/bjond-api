@@ -1,4 +1,6 @@
 class BjondRegistration < ActiveRecord::Base
+  has_many :BjondServices
+  
   include BjondIntegration
   require 'attr_encrypted'
   require 'Resolv'
