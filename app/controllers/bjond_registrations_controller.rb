@@ -1,6 +1,10 @@
 class BjondRegistrationsController < ApplicationController
   before_action :set_bjond_registration, only: [:show, :edit, :update, :destroy]
 
+  require 'bjond-api'
+  require 'resolv'
+  require 'uri'
+
   # GET /bjond_registrations
   def index
     @bjond_registrations = BjondRegistration.all
@@ -21,8 +25,10 @@ class BjondRegistrationsController < ApplicationController
 
   # POST /bjond_registrations
   def create
-    require 'bjond-api'
     @bjond_registration = BjondRegistration.find_or_initialize_by(bjond_registration_params)
+    uri = URI.parse(@bjond_registration.server)
+    @bjond_registration.ip = Resolv.getaddress(uri.host)
+    @bjond_registration.host = Resolv.getname(@bjond_registration.ip)
     BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition, @bjond_registration.server)
 
     if @bjond_registration.save
@@ -55,6 +61,6 @@ class BjondRegistrationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bjond_registration_params
-      params.require(:bjond_registration).permit(:server, :encryption_key)
+      params.require(:bjond_registration).permit(:server, :encryption_key, :ip, :host)
     end
 end

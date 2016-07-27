@@ -30,16 +30,17 @@ class BjondservicesController < ApplicationController
 
   # Encrypted Communication w Bjond servers
   def get_schema
-    binding.pry
-    render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema)
+    render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema,
+                                       BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
   end
 
   def get_group_configuration
-    render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema)
+    render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema,
+                                       BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
   end
 
   private
-    def jwt_encode_payload(json)
+    def jwt_encode_payload(json, bjond_registration)
       payload = {
         :json => json,
         :iss => 'Bjönd, Inc.',
@@ -49,7 +50,7 @@ class BjondservicesController < ApplicationController
         :sub => ENV['BJOND_ADAPTER_SUBJECT']
       }.to_json
       header = {:alg => 'A128KW', :enc => 'A128CBC-HS256'}
-      return SyrupPay::JsonEncryptionCompactSerialization.serialization(Base64.decode64(ENV['BJOND_POKITDOK_ENCRYPTION_KEY']), header, payload)
+      return SyrupPay::JsonEncryptionCompactSerialization.serialization(Base64.decode64(bjond_registration.encryption_key), header, payload)
     end
 
 end
