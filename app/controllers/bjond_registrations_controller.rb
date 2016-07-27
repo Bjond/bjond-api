@@ -55,6 +55,6 @@ class BjondRegistrationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bjond_registration_params
-      params.require(:bjond_registration).permit(:server, :encryptionKey)
+      params.require(:bjond_registration).permit(:server, :encryption_key)
     end
 end

@@ -30,6 +30,7 @@ class BjondservicesController < ApplicationController
 
   # Encrypted Communication w Bjond servers
   def get_schema
+    binding.pry
     render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema)
   end
 

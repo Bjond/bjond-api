@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Server</th>
-      <th>Encryptionkey</th>
+      <th>Encrypted Encryption Key</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
     <% @bjond_registrations.each do |bjond_registration| %>
       <tr>
         <td><%= bjond_registration.server %></td>
-        <td><%= bjond_registration.encryptionKey %></td>
+        <td><%= bjond_registration.encrypted_encryption_key %></td>
         <td><%= link_to 'Show', bjond_registration %></td>
         <td><%= link_to 'Edit', edit_bjond_registration_path(bjond_registration) %></td>
         <td><%= link_to 'Destroy', bjond_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -6,16 +6,16 @@
 </p>
 
 
-<%- if (@bjond_registration.encryptionKey) %>
+<%- if (@bjond_registration.encrypted_encryption_key) %>
   <div class="encryption-key-found">
     <p>
-      <strong>Encryptionkey:</strong>
-      <%= @bjond_registration.encryptionKey %>
+      <strong>Encryption Key (encrypted):</strong>
+      <%= @bjond_registration.encrypted_encryption_key %>
     </p>
   </div>
 <% else %>
   <p class="not-found">
-    Please log in to the Bjond server and locate the encryption key. You must be a tenant administratior. You will find this information on the 'Develop' tab of the system settings. Once you find this information, <%= link_to 'add it here', edit_bjond_registration_path(@bjond_registrations_path) %>.
+    Please log in to the Bjond server and locate the encryption key. You must be a tenant administratior. You will find this information on the 'Develop' tab of the system settings. Once you find this information, <%= link_to 'add it here', edit_bjond_registration_path(@bjond_registration) %>.
   </p>
 
 <% end %>
