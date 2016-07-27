@@ -28,14 +28,12 @@ class BjondservicesController < ApplicationController
 
   # Encrypted Communication w Bjond servers
   def configure_group_endpoint
-    puts 'configure group endpoint ****************************'
-    puts params[:groupid]
-    puts params[:token]
-    puts params
-    result = jwt_decode_payload_and_return_json(request.raw_post, BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
-    puts result
-    puts '****************************'
-    render :json => 'OK'
+    bjond_registration = BjondRegistration.find_registration_by_remote_ip(request.remote_ip)
+    result = jwt_decode_payload_and_return_json(request.raw_post, bjond_registration)
+    BjondIntegration::BjondAppConfig.instance.configure_group(result, bjond_registration)
+    render :json => {
+      :status => 'OK'
+    }.to_json
   end
 
   def get_schema
@@ -44,8 +42,9 @@ class BjondservicesController < ApplicationController
   end
 
   def get_group_configuration
-    render :json => jwt_encode_payload(BjondIntegration::BjondAppConfig.instance.group_configuration_schema,
-                                       BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
+    bjond_registration = BjondRegistration.find_registration_by_remote_ip(request.remote_ip)
+    payload = BjondIntegration::BjondAppConfig.instance.get_group_configuration(bjond_registration)
+    render :json => jwt_encode_payload(payload, BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
   end
 
   private
