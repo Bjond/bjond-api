@@ -8,6 +8,7 @@ class BjondRegistrationsController < ApplicationController
   # GET /bjond_registrations
   def index
     @bjond_registrations = BjondRegistration.all
+    @app_info = BjondIntegration::BjondAppConfig.instance.active_definition
   end
 
   # GET /bjond_registrations/1
