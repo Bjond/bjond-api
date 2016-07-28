@@ -1,6 +1,6 @@
 require 'bjond-api'
 
-integration_app = BjondIntegration::BjondAppDefinition.new
+integration_app = BjondApi::BjondAppDefinition.new
 integration_app.id           = '[your-guid-here]'
 integration_app.author       = 'Bjond, Inc.'
 integration_app.name         = 'Bjond Pokitdok API'
@@ -14,7 +14,7 @@ integration_app.rootEndpoint = "http://#{Rails.application.config.action_control
 
 
 
-config = BjondIntegration::BjondAppConfig.instance
+config = BjondApi::BjondAppConfig.instance
 config.active_definition = integration_app
 config.group_configuration_schema = {
   :id => 'urn:jsonschema:com:bjond:persistence:bjondservice:GroupConfiguration',

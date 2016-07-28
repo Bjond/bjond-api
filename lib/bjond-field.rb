@@ -1,7 +1,7 @@
 require 'securerandom'
 
-module BjondIntegration
+module BjondApi
   class BjondField
-    attr_accessor :id, :json_key, :name, :description, :field_type, :event, :options
+    attr_accessor :id, :jsonKey, :name, :description, :fieldType, :event, :options
   end
 end

@@ -1,6 +1,6 @@
 require 'singleton'
 
-module BjondIntegration
+module BjondApi
   class BjondAppConfig
     include Singleton
 

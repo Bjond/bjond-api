@@ -1,11 +1,12 @@
+include BjondApi
+require 'attr_encrypted'
+require 'Resolv'
+
 class BjondRegistration < ActiveRecord::Base
   has_many :BjondServices
   
-  include BjondIntegration
-  require 'attr_encrypted'
-  require 'Resolv'
   
-  attr_encrypted :encryption_key, key: ENV[BjondIntegration::BjondAppConfig.instance.encryption_key_name]
+  attr_encrypted :encryption_key, key: ENV[BjondApi::BjondAppConfig.instance.encryption_key_name]
 
   def self.find_registration_by_remote_ip(ip)
     ip = Resolv.getaddress(ip)

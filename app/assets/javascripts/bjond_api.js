@@ -10,6 +10,9 @@ angular.module('bjond-api',[])
   $scope.register = function (id) {
     $http.get('/bjond-app/services/register?id=' + id).then(function () {
       alert('Registration Updated with Bjond!');
+    }).catch(function (response) {
+      alert('Failed to register. Please check logs.');
+      console.log(response.data);
     });
   };
 

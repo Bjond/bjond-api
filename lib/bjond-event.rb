@@ -1,6 +1,6 @@
 
-module BjondIntegration
+module BjondApi
   class BjondEvent
-    attr_accessor :id, :json_key, :name, :description, :fields, :service_id
+    attr_accessor :id, :jsonKey, :name, :description, :fields, :serviceId
   end
 end

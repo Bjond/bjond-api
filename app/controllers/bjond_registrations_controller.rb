@@ -8,7 +8,7 @@ class BjondRegistrationsController < ApplicationController
   # GET /bjond_registrations
   def index
     @bjond_registrations = BjondRegistration.all
-    @app_info = BjondIntegration::BjondAppConfig.instance.active_definition
+    @app_info = BjondApi::BjondAppConfig.instance.active_definition
   end
 
   # GET /bjond_registrations/1
@@ -30,7 +30,12 @@ class BjondRegistrationsController < ApplicationController
     uri = URI.parse(@bjond_registration.server)
     @bjond_registration.ip = Resolv.getaddress(uri.host)
     @bjond_registration.host = Resolv.getname(@bjond_registration.ip)
-    BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition, @bjond_registration.server)
+    response = BjondApi.register_app(BjondApi::BjondAppConfig.instance.active_definition, @bjond_registration.server)
+
+    if (response.status == 500) 
+      throw "Unable to register with Bjond. \n" + response.body
+    end
+
 
     if @bjond_registration.save
       redirect_to @bjond_registration, notice: 'Bjond registration was successfully created.'
