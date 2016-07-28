@@ -4,29 +4,67 @@ A rubygem wrapper for the Bjönd API.
 
 This gem also contains an engine with endpoints that are made to interface with Bjond server-core.
 
-== Development
+== Creating a Bjond Integration App
 
-=== Migrations
+To create a Bjond App using the Ruby on Rails framework, perform the following actions within your Rails application.
+
+(1) Add the following line to your Gemfile -
+
+    gem 'bjond-api'
+
+(2) Install it with -
+
+    bundle install
+
+
+(3) Migrate your Database
 
 To install necessary migrations, add this to your Rails' application.rb file - 
 
-    config.paths['db/migrate'] << BjondIntegration::Engine.paths['db/migrate'].existent
+    config.paths['db/migrate'] = BjondIntegration::Engine.paths['db/migrate'].existent
 
-At this point, you can run the migrations as usual using - 
+
+(4) At this point, you can run the migrations as usual using - 
 
     rake db:migrate
 
-=== Encryption Key
+The `config.paths['db/migrate']` line can be removed once the migrations are copied.
 
-For security, the encryption keys stored from Bjond Server are themselves encrypted. Define the following environment variable: APP_ENCRYPTION_KEY. If you have multiple apps in your environment, you can modify the name of this constant using BjondIntegration::BjondAppConfig.instance.encryption_key_name. 
-
-
-=== Configuration Files
+(5) Generate Configuration Files
 
 To get you started, generate a config file by running the following command: 
     
     rails g initializer
 
-== Methods
+This will automatically do two things: 
+
+- (5a) Copy a baseline bower.json file in to the root of your app.  If you already have a bower.json file, you can skip this file when prompted.  Instead, you can copy the dependencies over manually.  At the time of this writing, the most import client side library is angular.js. Once the bower.json file is in your environment, run - 
+
+    bower install
+
+In application.js, include scripts using - 
+
+    //= require bjond-api
+
+- (5b) The generator will also create a root config create a config file that will initialize important variables for the Bjond-App gem. This will be copied into your app at: config/initializers/bjond-api-initializer.rb
+
+(6) Set-up Encryption Key
+
+For security, the encryption keys stored from Bjond Server are themselves encrypted. Define the following environment variable: APP_ENCRYPTION_KEY. If you have multiple apps in your environment, you can modify the name of this constant using BjondIntegration::BjondAppConfig.instance.encryption_key_name. 
+
+To create an API key, from the Rails console (Rails c), type - 
+
+    [ Array.new(32) { rand(256) }.pack('C*') ].pack('m').chop
+
+Add this to your .bashrc / .zshrc like follows: 
+
+    BJOND_APP_ENCRYPTION_KEY="12345678/nux3uEVX2tHBRGc5gN4gQXIbkFEmy6d3chas="
+
+Again, BJOND_APP_ENCRYPTION_KEY can be changed. It just needs to match the value set in your config file.
+
+== API Methods
 
 - register_app
+
+
+

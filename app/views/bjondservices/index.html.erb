@@ -1,15 +1,11 @@
 <h1 class="title" ng-controller="homeController">
-  Bjond App 2
+  <%= @app_info.name %>
 </h1>
 
 
 <div class="integration-app">
   <h2>App Info</h2>
 
-  <div class="field-wrapper">
-    <h3><%= @app_info.name %></h3>
-  </div>
-  
   <div class="field-wrapper">
     <div class="app-label">ID:</div>
     <div class="info"><%= @app_info.id %></div>

@@ -3,19 +3,22 @@ require 'bjond-api'
 integration_app = BjondIntegration::BjondAppDefinition.new
 integration_app.id           = '[your-guid-here]'
 integration_app.author       = 'Bjond, Inc.'
-integration_app.name         = 'my integration app'
+integration_app.name         = 'Bjond Pokitdok API'
 integration_app.description  = 'Testing API functionality'
 integration_app.iconURL      = ''
+
+# Warning: If you change configURL, or rootEndpoint, you will need to manually configure Bjond service routes.
+#          We recommend leaving these two variables alone.
 integration_app.configURL    = "http://#{Rails.application.config.action_controller.default_url_options[:host] || `hostname`}/bjond-app/services"
 integration_app.rootEndpoint = "http://#{Rails.application.config.action_controller.default_url_options[:host] || `hostname`}/bjond-app/services"
 
+
+
 config = BjondIntegration::BjondAppConfig.instance
-
 config.active_definition = integration_app
-
 config.group_configuration_schema = {
   :id => 'urn:jsonschema:com:bjond:persistence:bjondservice:GroupConfiguration',
-  :title => 'bjond-pokitdok-app-schema',
+  :title => 'bjond-[name]-app-schema',
   :type  => 'object',
   :properties => {
     :sample_field => {

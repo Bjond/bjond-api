@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="show-registrations" ng-controller="registrationsController">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Server:</strong>
-  <%= @bjond_registration.server %>
-</p>
-
-<p>
-  <strong>Host:</strong>
-  <%= @bjond_registration.host %>
-</p>
-
-<p>
-  <strong>IP:</strong>
-  <%= @bjond_registration.ip %>
-</p>
-
-
-<%- if (@bjond_registration.encrypted_encryption_key) %>
-  <div class="encryption-key-found">
-    <p>
-      <strong>Encryption Key (encrypted):</strong>
-      <%= @bjond_registration.encrypted_encryption_key %>
-    </p>
-  </div>
-<% else %>
-  <p class="not-found">
-    Please log in to the Bjond server and locate the encryption key. You must be a tenant administratior. You will find this information on the 'Develop' tab of the system settings. Once you find this information, <%= link_to 'add it here', edit_bjond_registration_path(@bjond_registration) %>.
+  <p>
+    <strong>Server:</strong>
+    <%= @bjond_registration.server %>
   </p>
 
-<% end %>
+  <p>
+    <strong>Host:</strong>
+    <%= @bjond_registration.host %>
+  </p>
+
+  <p>
+    <strong>IP:</strong>
+    <%= @bjond_registration.ip %>
+  </p>
 
 
-<%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
-<%= link_to 'Back', bjond_registrations_path %>
+  <%- if (@bjond_registration.encrypted_encryption_key) %>
+    <div class="encryption-key-found">
+      <p>
+        <strong>Encryption Key (encrypted):</strong>
+        <%= @bjond_registration.encrypted_encryption_key %>
+      </p>
+    </div>
+  <% else %>
+    <p class="not-found">
+      Please log in to the Bjond server and locate the encryption key. You must be a tenant administratior. You will find this information on the 'Develop' tab of the system settings. Once you find this information, <%= link_to 'add it here', edit_bjond_registration_path(@bjond_registration) %>.
+    </p>
+
+  <% end %>
+
+
+  <button ng-click="register(<%= @bjond_registration.id %>)">
+    Update Registration
+  </button>
+  <%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
+  <%= link_to 'Back', bjond_registrations_path %>
+
+</div>

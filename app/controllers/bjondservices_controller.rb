@@ -7,11 +7,20 @@ class BjondservicesController < ApplicationController
 
   def index
     @app_info = BjondIntegration::BjondAppConfig.instance.active_definition
-    BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition)
   end
 
   def register
-    BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition)
+    registration = BjondRegistration.find_by_id(params[:id])
+    if (!registration.nil?)
+      BjondIntegration::BjondApi.register_app(BjondIntegration::BjondAppConfig.instance.active_definition, registration.server)
+      render :json => {
+        :status => 'Updated'
+      }
+    else
+      render :json => {
+        :status => 'Registration not found'
+      }
+    end
   end
 
 
@@ -26,7 +35,7 @@ class BjondservicesController < ApplicationController
     render :json => service
   end
 
-  # Encrypted Communication w Bjond servers
+  ################ Encrypted Communication w Bjond servers ################
   def configure_group_endpoint
     bjond_registration = BjondRegistration.find_registration_by_remote_ip(request.remote_ip)
     result = jwt_decode_payload_and_return_json(request.raw_post, bjond_registration)
@@ -44,7 +53,7 @@ class BjondservicesController < ApplicationController
   def get_group_configuration
     bjond_registration = BjondRegistration.find_registration_by_remote_ip(request.remote_ip)
     payload = BjondIntegration::BjondAppConfig.instance.get_group_configuration(bjond_registration)
-    render :json => jwt_encode_payload(payload, BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
+    render :json => jwt_encode_payload(payload.to_json, BjondRegistration.find_registration_by_remote_ip(request.remote_ip))
   end
 
   private

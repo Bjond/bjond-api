@@ -3,5 +3,6 @@ class InitializerGenerator < Rails::Generators::Base
 
   def create_initializer_file
     copy_file "initializer.rb",  "config/initializers/bjond_api_initializer.rb"
+    copy_file "../../../bower.json", "bower.json"
   end
 end
