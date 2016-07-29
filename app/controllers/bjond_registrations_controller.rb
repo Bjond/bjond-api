@@ -2,7 +2,6 @@ class BjondRegistrationsController < ApplicationController
   before_action :set_bjond_registration, only: [:show, :edit, :update, :destroy]
 
   require 'bjond-api'
-  require 'resolv'
   require 'uri'
 
   # GET /bjond_registrations

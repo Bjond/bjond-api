@@ -21,8 +21,7 @@ To create a Bjond App using the Ruby on Rails framework, perform the following a
 
 To install necessary migrations, add this to your Rails' application.rb file - 
 
-    config.paths['db/migrate'] = BjondApi::Engine.paths['db/migrate'].existent
-
+    rake bjond_api_engine:install:migrations
 
 (4) At this point, you can run the migrations as usual using - 
 
