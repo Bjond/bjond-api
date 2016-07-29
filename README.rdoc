@@ -4,6 +4,12 @@ A rubygem wrapper for the Bjönd API.
 
 This gem also contains an engine with endpoints that are made to interface with Bjond server-core.
 
+== Installation
+
+    gem install 'bjond-api'
+
+For specific version info visit the gem page[https://rubygems.org/gems/bjond-api].
+
 == Creating a Bjond Integration App
 
 To create a Bjond App using the Ruby on Rails framework, perform the following actions within your Rails application.
@@ -26,8 +32,6 @@ To install necessary migrations, add this to your Rails' application.rb file -
 (4) At this point, you can run the migrations as usual using - 
 
     rake db:migrate
-
-The `config.paths['db/migrate']` line can be removed once the migrations are copied.
 
 (5) Generate Configuration Files
 
