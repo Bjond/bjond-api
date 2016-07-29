@@ -1,34 +1,73 @@
 <div class="integration-app">
   <h2>App Info</h2>
 
+  <h3><%= @app_info.name %></h3>
+
   <div class="field-wrapper">
-    <div class="app-label">ID:</div>
+    <div class="app-label">ID::</div>
     <div class="info"><%= @app_info.id %></div>
   </div>
 
   <div class="field-wrapper">
-    <div class="app-label">Author:</div>
+    <div class="app-label">Author::</div>
     <div class="info"><%= @app_info.author %></div>
   </div>
 
   <div class="field-wrapper">
-    <div class="app-label">Description</div>
+    <div class="app-label">Description:</div>
     <div class="info"><%= @app_info.description %></div>
   </div>
 
   <div class="field-wrapper">
-    <div class="app-label">Icon URL</div>
+    <div class="app-label">Icon URL:</div>
     <div class="info"><%= @app_info.iconURL %></div>
   </div>
 
   <div class="field-wrapper">
-    <div class="app-label">Config URL</div>
+    <div class="app-label">Config URL:</div>
     <div class="info"><%= @app_info.configURL %></div>
   </div>
 
   <div class="field-wrapper">
-    <div class="app-label">Root Endpoint</div>
+    <div class="app-label">Root Endpoint:</div>
     <div class="info"><%= @app_info.rootEndpoint %></div>
   </div>
+
+  </br>
+  <h3> Events </h3>
+  <% @app_info.integrationEvent.each do |event| %>
+    <div class="event">
+      <h4><%= event.name %></h4>
+      
+      <div class="field-wrapper">
+        <div class="app-label">Description:</div>
+        <div class="info"><%= event.description %></div>
+      </div>
+
+      <div class="field-wrapper">
+        <div class="app-label">jsonKey:</div>
+        <div class="info"><%= event.jsonKey %></div>
+      </div>
+      
+      <h4>Fields:</h4>
+      <% event.fields.each do |field| %>
+        <div class="field">
+          <div class="field-wrapper">
+            <div class="app-label">Field Name:</div>
+            <div class="info"><%= field.name %></div>
+          </div>
+          <div class="field-wrapper">
+            <div class="app-label">ID:</div>
+            <div class="info"><%= field.id %></div>
+          </div>
+          <div class="field-wrapper">
+            <div class="app-label">jsonKey:</div>
+            <div class="info"><%= field.jsonKey %></div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
 
 </div>

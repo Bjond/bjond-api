@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["Blake Rego"]
   s.date = "2016-07-29"
+  s.description = "Rails engine that provides communication between Bj\u{f6}nd Server Core and a client app."
   s.email = "blake.rego@bjondinc.com"
   s.executables = ["rails"]
   s.extra_rdoc_files = [
@@ -68,6 +69,7 @@ Gem::Specification.new do |s|
     "lib/generators/templates/initializer.rb"
   ]
   s.homepage = "http://github.com/Bjond/bjond-integration-gem"
+  s.licenses = ["GPL"]
   s.rubygems_version = "2.4.8"
   s.summary = "Interface that facilitates communication with Bj\u{f6}nd servers."
 
@@ -75,24 +77,24 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<jeweler>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 4.2.4", "~> 4.2"])
-      s.add_runtime_dependency(%q<faraday>, [">= 0"])
-      s.add_runtime_dependency(%q<syruppay_jose>, [">= 0"])
-      s.add_runtime_dependency(%q<attr_encrypted>, ["~> 3.0.0"])
+      s.add_development_dependency(%q<jeweler>, [">= 2.0.1", "~> 2.0"])
+      s.add_runtime_dependency(%q<faraday>, ["~> 0.9.2"])
+      s.add_runtime_dependency(%q<syruppay_jose>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<attr_encrypted>, [">= 3.0.3", "~> 3.0"])
     else
-      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 4.2.4", "~> 4.2"])
-      s.add_dependency(%q<faraday>, [">= 0"])
-      s.add_dependency(%q<syruppay_jose>, [">= 0"])
-      s.add_dependency(%q<attr_encrypted>, ["~> 3.0.0"])
+      s.add_dependency(%q<jeweler>, [">= 2.0.1", "~> 2.0"])
+      s.add_dependency(%q<faraday>, ["~> 0.9.2"])
+      s.add_dependency(%q<syruppay_jose>, ["~> 1.0"])
+      s.add_dependency(%q<attr_encrypted>, [">= 3.0.3", "~> 3.0"])
     end
   else
-    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 4.2.4", "~> 4.2"])
-    s.add_dependency(%q<faraday>, [">= 0"])
-    s.add_dependency(%q<syruppay_jose>, [">= 0"])
-    s.add_dependency(%q<attr_encrypted>, ["~> 3.0.0"])
+    s.add_dependency(%q<jeweler>, [">= 2.0.1", "~> 2.0"])
+    s.add_dependency(%q<faraday>, ["~> 0.9.2"])
+    s.add_dependency(%q<syruppay_jose>, ["~> 1.0"])
+    s.add_dependency(%q<attr_encrypted>, [">= 3.0.3", "~> 3.0"])
   end
 end
 
