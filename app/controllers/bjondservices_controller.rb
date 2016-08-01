@@ -32,7 +32,7 @@ class BjondservicesController < ApplicationController
 
   def register_group_endpoint
     registration = BjondRegistration.find_registration_by_remote_ip(request.remote_ip)
-    service = BjondService.find_or_initialize_by(:group_id => params[:groupid], :registration_id => registration.id)
+    service = BjondService.find_or_initialize_by(:group_id => params[:groupid], :bjond_registration_id => registration.id)
     if (service.endpoint != params[:endpoint])
       service.endpoint = params[:endpoint]
       service.save

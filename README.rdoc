@@ -74,4 +74,13 @@ Again, BJOND_APP_ENCRYPTION_KEY can be changed. It just needs to match the value
 - register_app
 
 
+- fire_event
+
+
+
+== Environment Variables
+
+- BJOND_ADAPTER_AUDIENCE
+- BJOND_ADAPTER_SUBJECT
+
 

@@ -1,4 +1,6 @@
-module BjondJwtHelper
+require 'syruppay_jose'
+
+module BjondJwt
   def jwt_encode_payload(json, bjond_registration)
     payload = {
       :json => json,
@@ -9,8 +11,6 @@ module BjondJwtHelper
       :sub => ENV['BJOND_ADAPTER_SUBJECT']
     }.to_json
     header = {:alg => 'A128KW', :enc => 'A128CBC-HS256'}
-    puts "**************************************************"
-    puts bjond_registration.encryption_key
     return SyrupPay::JsonEncryptionCompactSerialization.serialization(Base64.decode64(bjond_registration.encryption_key), header, payload)
   end
 
