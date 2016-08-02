@@ -2,7 +2,8 @@ class BjondservicesController < ApplicationController
 
   require 'bjond-api'
   require 'syruppay_jose'
-  include BjondJwtHelper
+  require 'bjond-jwt'
+  include BjondJwt
 
   skip_before_filter :verify_authenticity_token, :only => [:get_schema, :register_group_endpoint, :configure_group_endpoint]
 
