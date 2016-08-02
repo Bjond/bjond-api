@@ -69,13 +69,22 @@ Add this to your .bashrc / .zshrc like follows:
 
 Again, BJOND_APP_ENCRYPTION_KEY can be changed. It just needs to match the value set in your config file.
 
+== Routes
+
+This gem contains several prepared routes that will aid registration, and communication with Bjond Server core. 
+
+To set your app's default route to the registration page, add this line to your routes.rb file - 
+
+    root 'bjond_registrations#index'
+
+For more information on the default routes, check-out the gem's route page[https://github.com/Bjond/bjond-api/blob/master/config/routes.rb]
+
 == API Methods
 
 - register_app
 
 
 - fire_event
-
 
 
 == Environment Variables
