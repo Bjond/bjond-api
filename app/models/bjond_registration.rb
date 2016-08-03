@@ -2,7 +2,7 @@ include BjondApi
 require 'attr_encrypted'
 
 class BjondRegistration < ActiveRecord::Base
-  has_many :BjondServices
+  has_many :bjond_services
   
   
   attr_encrypted :encryption_key, key: ENV[BjondApi::BjondAppConfig.instance.encryption_key_name]
