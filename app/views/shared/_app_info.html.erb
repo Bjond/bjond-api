@@ -61,11 +61,38 @@
             <div class="info"><%= field.id %></div>
           </div>
           <div class="field-wrapper">
-            <div class="app-label">jsonKey:</div>
+            <div class="app-label">Json Key:</div>
             <div class="info"><%= field.jsonKey %></div>
           </div>
         </div>
       <% end %>
+
+    </div>
+  <% end %>
+
+  <h3> Consequences </h3>
+  <% @app_info.integrationConsequence.each do |consequence| %>
+    <div class="consequence">
+      <h4><%= consequence.name %></h4>
+
+      <div class="field-wrapper">
+        <div class="app-label">ID:</div>
+        <div class="info"><%= consequence.id %></div>
+      </div>
+
+      <div class="field-wrapper">
+        <div class="app-label">Json Key:</div>
+        <div class="info"><%= consequence.jsonKey %></div>
+      </div>
+      <div class="field-wrapper">
+        <div class="app-label">Description:</div>
+        <div class="info"><%= consequence.description %></div>
+      </div>
+
+      <div class="field-wrapper">
+        <div class="app-label">Webhook:</div>
+        <div class="info"><%= consequence.webhook %></div>
+      </div>
 
     </div>
   <% end %>
