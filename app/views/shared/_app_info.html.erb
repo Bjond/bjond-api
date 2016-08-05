@@ -34,67 +34,77 @@
   </div>
 
   </br>
-  <h3> Events </h3>
-  <% @app_info.integrationEvent.each do |event| %>
-    <div class="event">
-      <h4><%= event.name %></h4>
-      
-      <div class="field-wrapper">
-        <div class="app-label">Description:</div>
-        <div class="info"><%= event.description %></div>
-      </div>
 
-      <div class="field-wrapper">
-        <div class="app-label">jsonKey:</div>
-        <div class="info"><%= event.jsonKey %></div>
-      </div>
-      
-      <h4>Fields:</h4>
-      <% event.fields.each do |field| %>
-        <div class="field">
-          <div class="field-wrapper">
-            <div class="app-label">Field Name:</div>
-            <div class="info"><%= field.name %></div>
-          </div>
-          <div class="field-wrapper">
-            <div class="app-label">ID:</div>
-            <div class="info"><%= field.id %></div>
-          </div>
-          <div class="field-wrapper">
-            <div class="app-label">Json Key:</div>
-            <div class="info"><%= field.jsonKey %></div>
-          </div>
+  <% if @app_info.integrationEvent.count > 0 %>
+    <h3> Events </h3>
+    <% @app_info.integrationEvent.each do |event| %>
+      <div class="event">
+        <h4><%= event.name %></h4>
+        
+        <div class="field-wrapper">
+          <div class="app-label">Description:</div>
+          <div class="info"><%= event.description %></div>
         </div>
-      <% end %>
 
-    </div>
+        <div class="field-wrapper">
+          <div class="app-label">jsonKey:</div>
+          <div class="info"><%= event.jsonKey %></div>
+        </div>
+        
+        <h4>Fields:</h4>
+        <% event.fields.each do |field| %>
+          <div class="field">
+            <div class="field-wrapper">
+              <div class="app-label">Field Name:</div>
+              <div class="info"><%= field.name %></div>
+            </div>
+            <div class="field-wrapper">
+              <div class="app-label">ID:</div>
+              <div class="info"><%= field.id %></div>
+            </div>
+            <div class="field-wrapper">
+              <div class="app-label">Json Key:</div>
+              <div class="info"><%= field.jsonKey %></div>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    <% end %>
+  <% else %>
+    No events are currently available for this app.
   <% end %>
 
-  <h3> Consequences </h3>
-  <% @app_info.integrationConsequence.each do |consequence| %>
-    <div class="consequence">
-      <h4><%= consequence.name %></h4>
+  <% if @app_info.integrationConsequence.count > 0 %>
+    <h3> Consequences </h3>
+    <% @app_info.integrationConsequence.each do |consequence| %>
+      <div class="consequence">
+        <h4><%= consequence.name %></h4>
 
-      <div class="field-wrapper">
-        <div class="app-label">ID:</div>
-        <div class="info"><%= consequence.id %></div>
-      </div>
+        <div class="field-wrapper">
+          <div class="app-label">ID:</div>
+          <div class="info"><%= consequence.id %></div>
+        </div>
 
-      <div class="field-wrapper">
-        <div class="app-label">Json Key:</div>
-        <div class="info"><%= consequence.jsonKey %></div>
-      </div>
-      <div class="field-wrapper">
-        <div class="app-label">Description:</div>
-        <div class="info"><%= consequence.description %></div>
-      </div>
+        <div class="field-wrapper">
+          <div class="app-label">Json Key:</div>
+          <div class="info"><%= consequence.jsonKey %></div>
+        </div>
+        <div class="field-wrapper">
+          <div class="app-label">Description:</div>
+          <div class="info"><%= consequence.description %></div>
+        </div>
 
-      <div class="field-wrapper">
-        <div class="app-label">Webhook:</div>
-        <div class="info"><%= consequence.webhook %></div>
-      </div>
+        <div class="field-wrapper">
+          <div class="app-label">Webhook:</div>
+          <div class="info"><%= consequence.webhook %></div>
+        </div>
 
+      </div>
+    <% end %>
+  <% else %>
+    <div class="consequence non-available">
+      No consequences are available for this app.
     </div>
   <% end %>
-
 </div>

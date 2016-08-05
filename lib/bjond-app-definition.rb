@@ -8,6 +8,8 @@ module BjondApi
       self.id = SecureRandom.uuid
       self.configURL    = "http://#{self.get_hostname}/bjond-app/services"
       self.rootEndpoint = "http://#{self.get_hostname}/bjond-app/services"
+      self.integrationEvent = []
+      self.integrationConsequence = []
     end
 
     def get_hostname()

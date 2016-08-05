@@ -3,7 +3,7 @@ require 'syruppay_jose'
 module BjondJwt
   def jwt_encode_payload(json, bjond_registration)
     payload = {
-      :json => json.to_json,
+      :json => json,
       :iss => 'Bjönd, Inc.',
       :aud => ENV['BJOND_ADAPTER_AUDIENCE'],
       :exp => Time.now.to_i + 10*3600,

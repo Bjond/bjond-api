@@ -11,6 +11,8 @@ begin
     gem.add_dependency 'faraday', '~> 0.9.2'
     gem.add_dependency 'syruppay_jose', '~> 1.0'
     gem.add_dependency 'attr_encrypted', '~> 3.0', '>= 3.0.3'
+    # gem.add_dependency 'less-rails', '~> 2.7', '>= 2.7.1'
+    # gem.add_dependency 'less', '~> 2.6'
     gem.licenses = ['GPL']
   end
   Jeweler::GemcutterTasks.new
