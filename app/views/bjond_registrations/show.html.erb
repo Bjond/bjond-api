@@ -32,9 +32,10 @@
   <% end %>
 
 
-  <button ng-click="register(<%= @bjond_registration.id %>)">
+  <button class="btn register" ng-click="register(<%= @bjond_registration.id %>)">
     Update Registration
   </button>
+  </br>
   <%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
   <%= link_to 'Back', bjond_registrations_path %>
 

@@ -1,0 +1,187 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.bjond-application {
+  background: image-url('bjond-api/BjondHealth-BackgroundALT_20140724.png');
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  min-height: 100%;
+  font-family: "Titillium Web Regular";
+  color: #707b7f;
+}
+
+.bjond-registration, .edit-registrations {
+  .bjond-app-title{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    background-color: #2d2d2c;
+    border: 1px solid #2d2d2c;
+    color: #c9c9c9;
+    width: 95%;
+    margin-left: calc(2.5% - 10px);
+    padding: 10px;
+    margin-bottom: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+
+.bjond-registration-list {
+  background-color: white;
+  border: 1px solid white;
+  padding: 10px;
+  text-align: center;
+  width: 95%;
+  margin-left: calc(2.5% - 10px);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  .bjond-table {
+    text-align: center;
+    width: 100%;
+  }
+
+  .new-registration-link {
+    margin-top: 10px;
+  }
+
+}
+
+.app-info, .show-registrations, .edit-registrations, .new-registrations {
+  background-color: white;
+  margin-top: 20px;
+  padding: 20px 0 20px 20px;
+  border: 1px solid white;
+  width: 95%;
+  margin-left: calc(2.5% - 10px);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  .app-info-header {
+    img {
+      width: 96px;
+      height: 96px;
+    }
+    text-align: center;
+    .app-name {
+      margin-top: 5px;
+    }
+  }
+
+  .fields, .consequences, .events {
+    margin-left: calc(2.5% - 10px);
+  }
+  .field-wrapper {
+    margin: 10px 0;
+
+    .app-label {
+      display: inline-block;
+      font-weight: bold;
+    }
+    .info {
+      display: inline-block;
+    }
+  }
+  .non-available {
+    margin: 30px 0;
+    font-style: italic;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    height: 20px;
+    font-size: 15px;
+    display: inline-block;
+    border-radius: 4px;
+    width: calc(90% - 227px);
+    background: #cbcbcb;
+    color: #707b7f;
+  }
+
+  .field {
+    margin-bottom: 10px;
+    span.label {
+      margin-right: 20px;
+      width: 227px;
+      display: -webkit-inline-box
+    }
+    .additional-info {
+      text-align: center;
+    }
+  }
+
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions input[type="submit"], button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background-color: #99cc33;
+  color: white;
+  text-align: center;
+}
+
+.btn.register {
+  margin-bottom: 20px;
+}
+
+@font-face {
+    font-family: "Titillium Web Regular";
+    src: font-url("bjond-api/TitilliumWeb-Regular.eot");
+    src: font-url("bjond-api/TitilliumWeb-Regular.eot?#iefix") format('embedded-opentype'),
+    font-url("bjond-api/TitilliumWeb-Regular.svg#TitilliumWebRegular") format("svg"),
+    font-url("bjond-api/TitilliumWeb-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Titillium Web Semi Bold";
+    src: font-url("bjond-api/TitilliumWeb-SemiBold.eot");
+    src: font-url("bjond-api/TitilliumWeb-SemiBold.eot?#iefix") format('embedded-opentype'),
+    font-url("bjond-api/TitilliumWeb-SemiBold.svg#TitilliumWebSemiBold") format("svg"),
+    font-url("bjond-api/TitilliumWeb-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Titillium Web Light";
+    src: font-url("bjond-api/TitilliumWeb-Light.eot");
+    src: font-url("bjond-api/TitilliumWeb-Light.eot?#iefix") format('embedded-opentype'),
+    font-url("bjond-api/TitilliumWeb-Light.svg#TitilliumWebLight") format("svg"),
+    font-url("bjond-api/TitilliumWeb-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Titillium Web Extra Light";
+    src: font-url("bjond-api/TitilliumWeb-ExtraLight.eot");
+    src: font-url("bjond-api/TitilliumWeb-ExtraLight.eot?#iefix") format('embedded-opentype'),
+    font-url("bjond-api/TitilliumWeb-ExtraLight.svg#TitilliumWebExtraLight") format("svg"),
+    font-url("bjond-api/TitilliumWeb-ExtraLight.ttf") format("truetype");
+}

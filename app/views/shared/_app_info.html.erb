@@ -1,26 +1,13 @@
-<div class="integration-app">
-  <h2>App Info</h2>
-
-  <h3><%= @app_info.name %></h3>
-
-  <div class="field-wrapper">
-    <div class="app-label">ID::</div>
-    <div class="info"><%= @app_info.id %></div>
+<div class="app-info">
+  <div class="app-info-header">
+    <%= image_tag @app_info.iconURL %>
+    <h2 class="app-name"><%= @app_info.name %></h2>
   </div>
 
-  <div class="field-wrapper">
-    <div class="app-label">Author::</div>
-    <div class="info"><%= @app_info.author %></div>
-  </div>
 
   <div class="field-wrapper">
     <div class="app-label">Description:</div>
     <div class="info"><%= @app_info.description %></div>
-  </div>
-
-  <div class="field-wrapper">
-    <div class="app-label">Icon URL:</div>
-    <div class="info"><%= @app_info.iconURL %></div>
   </div>
 
   <div class="field-wrapper">
@@ -33,75 +20,92 @@
     <div class="info"><%= @app_info.rootEndpoint %></div>
   </div>
 
+  <div class="field-wrapper">
+    <div class="app-label">Author:</div>
+    <div class="info"><%= @app_info.author %></div>
+  </div>
+
+  <div class="field-wrapper">
+    <div class="app-label">ID:</div>
+    <div class="info"><%= @app_info.id %></div>
+  </div>
+
+
   </br>
 
   <% if @app_info.integrationEvent.count > 0 %>
-    <h3> Events </h3>
-    <% @app_info.integrationEvent.each do |event| %>
-      <div class="event">
-        <h4><%= event.name %></h4>
-        
-        <div class="field-wrapper">
-          <div class="app-label">Description:</div>
-          <div class="info"><%= event.description %></div>
-        </div>
-
-        <div class="field-wrapper">
-          <div class="app-label">jsonKey:</div>
-          <div class="info"><%= event.jsonKey %></div>
-        </div>
-        
-        <h4>Fields:</h4>
-        <% event.fields.each do |field| %>
-          <div class="field">
-            <div class="field-wrapper">
-              <div class="app-label">Field Name:</div>
-              <div class="info"><%= field.name %></div>
-            </div>
-            <div class="field-wrapper">
-              <div class="app-label">ID:</div>
-              <div class="info"><%= field.id %></div>
-            </div>
-            <div class="field-wrapper">
-              <div class="app-label">Json Key:</div>
-              <div class="info"><%= field.jsonKey %></div>
-            </div>
+    <h2> Events </h2>
+    <div class="events">
+      <% @app_info.integrationEvent.each do |event| %>
+        <div class="event">
+          <h4><%= event.name %></h4>
+          
+          <div class="field-wrapper">
+            <div class="app-label">Description:</div>
+            <div class="info"><%= event.description %></div>
           </div>
-        <% end %>
 
-      </div>
-    <% end %>
+          <div class="field-wrapper">
+            <div class="app-label">jsonKey:</div>
+            <div class="info"><%= event.jsonKey %></div>
+          </div>
+          
+          <h3>Fields:</h3>
+          <div class="fields">
+            <% event.fields.each do |field| %>
+              <div class="field">
+                <div class="field-wrapper">
+                  <div class="app-label">Field Name:</div>
+                  <div class="info"><%= field.name %></div>
+                </div>
+                <div class="field-wrapper">
+                  <div class="app-label">ID:</div>
+                  <div class="info"><%= field.id %></div>
+                </div>
+                <div class="field-wrapper">
+                  <div class="app-label">Json Key:</div>
+                  <div class="info"><%= field.jsonKey %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   <% else %>
     No events are currently available for this app.
   <% end %>
 
   <% if @app_info.integrationConsequence.count > 0 %>
-    <h3> Consequences </h3>
-    <% @app_info.integrationConsequence.each do |consequence| %>
-      <div class="consequence">
-        <h4><%= consequence.name %></h4>
+    <h2> Consequences </h2>
+    <div class="consequences">
+      <% @app_info.integrationConsequence.each do |consequence| %>
+        <div class="consequence">
+          <h4><%= consequence.name %></h4>
 
-        <div class="field-wrapper">
-          <div class="app-label">ID:</div>
-          <div class="info"><%= consequence.id %></div>
-        </div>
+          <div class="field-wrapper">
+            <div class="app-label">ID:</div>
+            <div class="info"><%= consequence.id %></div>
+          </div>
 
-        <div class="field-wrapper">
-          <div class="app-label">Json Key:</div>
-          <div class="info"><%= consequence.jsonKey %></div>
-        </div>
-        <div class="field-wrapper">
-          <div class="app-label">Description:</div>
-          <div class="info"><%= consequence.description %></div>
-        </div>
+          <div class="field-wrapper">
+            <div class="app-label">Json Key:</div>
+            <div class="info"><%= consequence.jsonKey %></div>
+          </div>
+          <div class="field-wrapper">
+            <div class="app-label">Description:</div>
+            <div class="info"><%= consequence.description %></div>
+          </div>
 
-        <div class="field-wrapper">
-          <div class="app-label">Webhook:</div>
-          <div class="info"><%= consequence.webhook %></div>
-        </div>
+          <div class="field-wrapper">
+            <div class="app-label">Webhook:</div>
+            <div class="info"><%= consequence.webhook %></div>
+          </div>
 
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   <% else %>
     <div class="consequence non-available">
       No consequences are available for this app.

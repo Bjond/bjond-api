@@ -1,25 +1,37 @@
-<h1>New Bjond Registration</h1>
+<div class="new-registrations">
 
-<%= form_for(@bjond_registration) do |f| %>
-  <% if @bjond_registration.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bjond_registration.errors.count, "error") %> prohibited this bjond_registration from being saved:</h2>
+  <h1 class="app-info-header">New Bjond Registration</h1>
 
-      <ul>
-      <% @bjond_registration.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_for(@bjond_registration) do |f| %>
+    <% if @bjond_registration.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@bjond_registration.errors.count, "error") %> prohibited this bjond_registration from being saved:</h2>
+
+        <ul>
+        <% @bjond_registration.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <span class="label">
+        Enter server name
+      </span>
+      <%= f.text_field :server %>
+      
+      <div class="additional-info">
+        (e.g. https://test.bjondhealth.com)
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Register with Bjond"%>
     </div>
   <% end %>
 
-  <div class="field">
-    Enter server name (e.g. https://test.bjondhealth.com)
-    <%= f.text_field :server %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Register with Bjond"%>
-  </div>
-<% end %>
+  </br>
+  <%= link_to 'Back', bjond_registrations_path %>
 
-<%= link_to 'Back', bjond_registrations_path %>
+</div>
