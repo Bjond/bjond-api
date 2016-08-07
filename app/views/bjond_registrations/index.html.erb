@@ -5,27 +5,33 @@
 
 
   <div class="bjond-registration-list">
-    <table class="bjond-table">
-      <thead>
-        <tr class="bjond-table-row">
-          <th>Server</th>
-          <th>Encrypted Encryption Key</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @bjond_registrations.each do |bjond_registration| %>
+    <% if @bjond_registrations.count > 0 %>
+      <table class="bjond-table">
+        <thead>
           <tr class="bjond-table-row">
-            <td><%= bjond_registration.server %></td>
-            <td><%= bjond_registration.encrypted_encryption_key %></td>
-            <td><%= link_to 'Show', bjond_registration %></td>
-            <td><%= link_to 'Edit', edit_bjond_registration_path(bjond_registration) %></td>
-            <td><%= link_to 'Destroy', bjond_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Server</th>
+            <th>Encrypted Encryption Key</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @bjond_registrations.each do |bjond_registration| %>
+            <tr class="bjond-table-row">
+              <td><%= bjond_registration.server %></td>
+              <td><%= bjond_registration.encrypted_encryption_key %></td>
+              <td><%= link_to 'Show', bjond_registration %></td>
+              <td><%= link_to 'Edit', edit_bjond_registration_path(bjond_registration) %></td>
+              <td><%= link_to 'Destroy', bjond_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="non-available">
+        No registrations
+      </div>
+    <% end %>
 
     <div class="new-registration-link">
       <%= link_to 'New Bjond registration', new_bjond_registration_path %>

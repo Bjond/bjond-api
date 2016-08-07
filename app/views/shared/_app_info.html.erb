@@ -34,7 +34,7 @@
   </br>
 
   <% if @app_info.integrationEvent.count > 0 %>
-    <h2> Events </h2>
+    <h2> Events (Conditions) </h2>
     <div class="events">
       <% @app_info.integrationEvent.each do |event| %>
         <div class="event">
@@ -56,7 +56,7 @@
               <div class="field">
                 <div class="field-wrapper">
                   <div class="app-label">Field Name:</div>
-                  <div class="info"><%= field.name %></div>
+                  <div class="info new-section"><%= field.name %></div>
                 </div>
                 <div class="field-wrapper">
                   <div class="app-label">ID:</div>
@@ -74,7 +74,9 @@
     </div>
 
   <% else %>
-    No events are currently available for this app.
+    <div class="non-available">
+      No events are currently available for this app.
+    </div>
   <% end %>
 
   <% if @app_info.integrationConsequence.count > 0 %>
