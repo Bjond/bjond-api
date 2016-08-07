@@ -69,6 +69,14 @@ Add this to your .bashrc / .zshrc like follows:
 
 Again, BJOND_APP_ENCRYPTION_KEY can be changed. It just needs to match the value set in your config file.
 
+Other environment variables that will need to be set include: 
+
+    BJOND_ADAPTER_SUBJECT
+
+and 
+
+    BJOND_ADAPTER_AUDIENCE
+
 == Routes
 
 This gem contains several prepared routes that will aid registration, and communication with Bjond Server core. 
