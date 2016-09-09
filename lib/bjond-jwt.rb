@@ -11,6 +11,8 @@ module BjondJwt
       :sub => ENV['BJOND_ADAPTER_SUBJECT']
     }.to_json
     header = {:alg => 'A128KW', :enc => 'A128CBC-HS256'}
+    ap payload
+    puts payload
     return SyrupPay::JsonEncryptionCompactSerialization.serialization(Base64.decode64(bjond_registration.encryption_key), header, payload)
   end
 
