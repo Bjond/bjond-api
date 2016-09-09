@@ -19,7 +19,7 @@ class BjondRegistration < ActiveRecord::Base
       return host_result
     end
 
-    puts 'Warning! No BjondRegistration found for ip: ' + ip + '. This IP resolves to ' + host. + 'Trying most recent registration. '
+    puts 'Warning! No BjondRegistration found for ip: ' + ip + '. This IP resolves to ' + host + 'Trying most recent registration. '
     puts 'Incoming request parameters: '
     ap request
     return BjondRegistration.last
