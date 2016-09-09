@@ -7,8 +7,8 @@ class BjondRegistration < ActiveRecord::Base
   
   attr_encrypted :encryption_key, key: ENV[BjondApi::BjondAppConfig.instance.encryption_key_name]
 
-  def self.find_registration_by_remote_ip(ip)
-    ip = Resolv.getaddress(ip)
+  def self.find_registration_by_remote_request(request)
+    ip = Resolv.getaddress(request.ip)
     result = BjondRegistration.find_by_ip(ip)
     if (!result.nil?)
       return result
@@ -19,8 +19,9 @@ class BjondRegistration < ActiveRecord::Base
       return host_result
     end
 
-    puts 'Warning! No BjondRegistration found for ip: ' + ip + '. This IP resolves to ' + host. 'Trying most recent registration. '
-
+    puts 'Warning! No BjondRegistration found for ip: ' + ip + '. This IP resolves to ' + host. + 'Trying most recent registration. '
+    puts 'Incoming request parameters: '
+    ap request
     return BjondRegistration.last
   end
 
