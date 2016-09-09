@@ -1,6 +1,10 @@
 <div class="show-registrations" ng-controller="registrationsController">
   <p id="notice"><%= notice %></p>
 
+  <h3>
+    Registration Info
+  </h3>
+
   <p>
     <strong>Server:</strong>
     <%= @bjond_registration.server %>
@@ -31,6 +35,11 @@
 
   <% end %>
 
+  <p>
+    <strong>ID:</strong>
+    <%= @bjond_registration.id %>
+  </p>
+
 
   <button class="btn register" ng-click="register(<%= @bjond_registration.id %>)">
     Update Registration
@@ -39,4 +48,29 @@
   <%= link_to 'Edit', edit_bjond_registration_path(@bjond_registration) %> |
   <%= link_to 'Back', bjond_registrations_path %>
 
+
+  <%- if @services.count > 0 %>
+    <h3>
+      Bjond Services associated with this Registration
+    </h3>
+
+    <%- @services.each do |service| %>
+      <div class="bjond-service">
+        <p>
+          <strong>ID:</strong>
+          <%= service.id %>
+        </p>
+        <p>
+          <strong>Group ID:</strong>
+          <%= service.group_id %>
+        </p>
+
+        <p>
+          <strong>Endpoint:</strong>
+          <%= service.endpoint %>
+        </p>
+
+      </div>
+    <% end %>
+  <% end %>
 </div>

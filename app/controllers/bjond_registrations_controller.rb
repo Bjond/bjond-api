@@ -12,6 +12,7 @@ class BjondRegistrationsController < ApplicationController
 
   # GET /bjond_registrations/1
   def show
+    @services = BjondService.where(:bjond_registration_id => @bjond_registration.id)
   end
 
   # GET /bjond_registrations/new
