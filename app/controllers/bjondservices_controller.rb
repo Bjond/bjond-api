@@ -32,7 +32,7 @@ class BjondservicesController < ApplicationController
 
 
   def register_group_endpoint
-    registration = BjondRegistration.find_registration_by_remote_request(request)
+    registration = get_registration
     service = BjondService.find_or_initialize_by(:group_id => params[:groupid], :bjond_registration_id => registration.id)
     if (service.endpoint != params[:endpoint])
       service.endpoint = params[:endpoint]
@@ -44,7 +44,7 @@ class BjondservicesController < ApplicationController
   ################ Encrypted Communication w Bjond servers ################
   def configure_group_endpoint
     puts 'configure_group_endpoint'
-    bjond_registration = BjondRegistration.find_registration_by_remote_request(request)
+    bjond_registration = get_registration
     result = jwt_decode_payload_and_return_json(request.raw_post, bjond_registration)
     BjondApi::BjondAppConfig.instance.configure_group(result, bjond_registration)
     render :json => {
@@ -55,13 +55,29 @@ class BjondservicesController < ApplicationController
   def get_schema
     puts 'get_schema'
     render :json => jwt_encode_payload(BjondApi::BjondAppConfig.instance.group_configuration_schema,
-                                       BjondRegistration.find_registration_by_remote_request(request))
+                                       get_registration)
   end
 
   def get_group_configuration
-    bjond_registration = BjondRegistration.find_registration_by_remote_request(request)
+    bjond_registration = get_registration
     payload = BjondApi::BjondAppConfig.instance.get_group_configuration(bjond_registration)
     render :json => jwt_encode_payload(payload.to_json, bjond_registration)
+  end
+
+  def get_registration
+    ap params
+    registration = nil
+    if (params[:environment])
+      puts '**************** Looking up registration by environment'
+      registration = BjondRegistration.find_by_server(params[:environment])
+    end
+
+    if (registration.nil?)
+      puts 'searching by remote request'
+      registration = BjondRegistration.find_registration_by_remote_request(request)
+    end
+    ap registration
+    return registration
   end
 
 end
