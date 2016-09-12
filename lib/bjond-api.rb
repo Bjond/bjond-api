@@ -25,10 +25,13 @@ module BjondApi
   ##
   # Fires events to all bjond_registrations
   def fire_event(bjond_registration, payload, event_id)
+    puts "Firing event for registration " + bjond_registration.id.
     services = BjondService.where(:bjond_registration_id => bjond_registration.id)
     connections = []
     services.each do |bjond_svc|
-      conn = Faraday.new(:url => bjond_svc.endpoint + "/#{event_id}")
+      url = bjond_svc.endpoint# + "/#{event_id}"
+      puts "Creating connection to " + url
+      conn = Faraday.new(:url => url)
       conn.post do |req|
         req.headers['Content-Type'] = 'application/json'
         req.body = BjondJwt::jwt_encode_payload(payload, bjond_registration)
