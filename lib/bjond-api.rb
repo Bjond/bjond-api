@@ -30,7 +30,7 @@ module BjondApi
     services = BjondService.where(:bjond_registration_id => bjond_registration.id)
     connections = []
     services.each do |bjond_svc|
-      url = bjond_svc.endpoint# + "/#{event_id}"
+      url = bjond_svc.endpoint + "/#{event_id}"
       puts "Creating connection to " + url
       conn = Faraday.new(:url => url)
       conn.post do |req|
