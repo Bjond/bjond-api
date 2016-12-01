@@ -2,8 +2,8 @@ require 'bjond-api'
 
 integration_app = BjondApi::BjondAppDefinition.new
 integration_app.id           = '[your-guid-here]'
-integration_app.author       = 'Bjond, Inc.'
-integration_app.name         = 'Bjond Pokitdok API'
+integration_app.author       = 'Bjönd, Inc.'
+integration_app.name         = 'Bjönd Pokitdok API'
 integration_app.description  = 'Testing API functionality'
 integration_app.iconURL      = ''
 

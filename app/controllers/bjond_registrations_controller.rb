@@ -38,7 +38,7 @@ class BjondRegistrationsController < ApplicationController
 
 
     if @bjond_registration.save
-      redirect_to @bjond_registration, notice: 'Bjond registration was successfully created.'
+      redirect_to @bjond_registration, notice: 'Bjönd registration was successfully created.'
     else
       render :new
     end
@@ -47,7 +47,7 @@ class BjondRegistrationsController < ApplicationController
   # PATCH/PUT /bjond_registrations/1
   def update
     if @bjond_registration.update(bjond_registration_params)
-      redirect_to @bjond_registration, notice: 'Bjond registration was successfully updated.'
+      redirect_to @bjond_registration, notice: 'Bjönd registration was successfully updated.'
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class BjondRegistrationsController < ApplicationController
   # DELETE /bjond_registrations/1
   def destroy
     @bjond_registration.destroy
-    redirect_to bjond_registrations_url, notice: 'Bjond registration was successfully destroyed.'
+    redirect_to bjond_registrations_url, notice: 'Bjönd registration was successfully destroyed.'
   end
 
   private
