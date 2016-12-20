@@ -86,7 +86,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/Bjond/bjond-integration-gem".freeze
   s.licenses = ["GPL".freeze]
-  s.rubygems_version = "2.6.6".freeze
+  s.rubygems_version = "2.6.7".freeze
   s.summary = "Interface that facilitates communication with Bj\u{f6}nd servers.".freeze
 
   if s.respond_to? :specification_version then
