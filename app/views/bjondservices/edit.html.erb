@@ -1,0 +1,36 @@
+<div class="edit-registrations">
+  <h1 class="app-info-header">Editing Bjond Bjond Service</h1>
+
+  <%= form_for(@bjondservice, :url => "/bjond-app/services/#{@bjondservice.id}") do |f| %>
+    <% if @bjondservice.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@bjondservice.errors.count, "error") %> prohibited this bjondservice from being saved:</h2>
+
+        <ul>
+        <% @bjondservice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <span class="label">
+        Group ID:
+      </span>
+      <%= f.text_field :group_id %>
+    </div>
+    <div class="field">
+      <span class="label">
+        Endpoint:
+      </span>
+      <%= f.text_field :endpoint %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+
+</div>

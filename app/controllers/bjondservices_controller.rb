@@ -11,6 +11,19 @@ class BjondservicesController < ApplicationController
     @app_info = BjondApi::BjondAppConfig.instance.active_definition
   end
 
+  def edit
+    @bjondservice = BjondService.find(params[:id])
+  end
+
+  def update
+    @bjondservice = BjondService.find(params[:id])
+    if @bjondservice.update(bjondservices_params)
+      redirect_to @bjondservice.bjond_registration, notice: 'Bjond services was successfully updated.'
+    else
+      render @bjondservice.bjond_registration
+    end
+  end
+
   def register
     registration = BjondRegistration.find_by_id(params[:id])
     if (!registration.nil?)
@@ -79,5 +92,11 @@ class BjondservicesController < ApplicationController
     ap registration
     return registration
   end
+
+  # Only allow a trusted parameter "white list" through.
+  private
+    def bjondservices_params
+      params.require(:bjond_service).permit(:group_id, :endpoint_id,)
+    end
 
 end

@@ -24,7 +24,7 @@
   <%- if (@bjond_registration.encrypted_encryption_key) %>
     <div class="encryption-key-found">
       <p>
-        <strong>Encryption Key (encrypted):</strong>
+        <strong>API Key / Encryption Key (encrypted):</strong>
         <%= @bjond_registration.encrypted_encryption_key %>
       </p>
     </div>
@@ -54,6 +54,21 @@
       Bjond Services associated with this Registration
     </h3>
 
+    <div class="bjond-info">
+      <p>
+        <strong>Note:</strong></br>
+        Please verify that the service endpoints below have the correct host.
+        If the host (preceeding /server-core/services..) is incorrect, the Bjond Server
+        may need to set its OPENSHIFT_PUBLIC_URL environment variable. Once this
+        environment variable is re-set (and the Bjond Server restarted), please
+        re-register the affected services.
+      </p>
+      <p>
+        The endpoints may also be manually updated by modifying the Bjond Service.
+        Please exercise caution when modifying these fields.
+      </p>
+    </div>
+
     <%- @services.each do |service| %>
       <div class="bjond-service">
         <p>
@@ -68,6 +83,10 @@
         <p>
           <strong>Endpoint:</strong>
           <%= service.endpoint %>
+        </p>
+
+        <p>
+          <%= link_to "Modify Bjond Service", "/bjond-app/services/edit/#{service.id}"%>
         </p>
 
       </div>

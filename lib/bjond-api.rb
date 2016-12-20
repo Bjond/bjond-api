@@ -32,6 +32,7 @@ module BjondApi
     services.each do |bjond_svc|
       url = bjond_svc.endpoint + "/#{event_id}"
       puts "Creating connection to " + url
+      puts BjondJwt::jwt_encode_payload(payload, bjond_registration)
       conn = Faraday.new(:url => url)
       conn.post do |req|
         req.headers['Content-Type'] = 'application/json'
