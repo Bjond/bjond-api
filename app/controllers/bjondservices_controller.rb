@@ -96,7 +96,7 @@ class BjondservicesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   private
     def bjondservices_params
-      params.require(:bjond_service).permit(:group_id, :endpoint_id,)
+      params.require(:bjond_service).permit(:group_id, :endpoint,)
     end
 
 end
