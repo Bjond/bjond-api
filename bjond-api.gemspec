@@ -93,20 +93,20 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>.freeze, [">= 4.2.4", "~> 4.2"])
+      s.add_runtime_dependency(%q<rails>.freeze, [">= 4.2.4"])
       s.add_development_dependency(%q<jeweler>.freeze, [">= 2.0.1", "~> 2.0"])
       s.add_runtime_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
       s.add_runtime_dependency(%q<syruppay_jose>.freeze, ["~> 1.0"])
       s.add_runtime_dependency(%q<attr_encrypted>.freeze, [">= 3.0.3", "~> 3.0"])
     else
-      s.add_dependency(%q<rails>.freeze, [">= 4.2.4", "~> 4.2"])
+      s.add_dependency(%q<rails>.freeze, [">= 4.2.4"])
       s.add_dependency(%q<jeweler>.freeze, [">= 2.0.1", "~> 2.0"])
       s.add_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
       s.add_dependency(%q<syruppay_jose>.freeze, ["~> 1.0"])
       s.add_dependency(%q<attr_encrypted>.freeze, [">= 3.0.3", "~> 3.0"])
     end
   else
-    s.add_dependency(%q<rails>.freeze, [">= 4.2.4", "~> 4.2"])
+    s.add_dependency(%q<rails>.freeze, [">= 4.2.4"])
     s.add_dependency(%q<jeweler>.freeze, [">= 2.0.1", "~> 2.0"])
     s.add_dependency(%q<faraday>.freeze, ["~> 0.9.2"])
     s.add_dependency(%q<syruppay_jose>.freeze, ["~> 1.0"])
