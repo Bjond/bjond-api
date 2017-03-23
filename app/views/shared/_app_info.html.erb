@@ -66,7 +66,31 @@
                   <div class="app-label">Json Key:</div>
                   <div class="info"><%= field.jsonKey %></div>
                 </div>
+                <div class="field-wrapper">
+                  <div class="app-label">Field Type:</div>
+                  <div class="info"><%= field.fieldType %></div>
+                </div>
+
+                <% if field.persist %>
+                  <div class="field-wrapper">
+                    <strong>Marked for Persistence</strong>
+                  </div>
+                  <div class="field-wrapper">
+                    <div class="app-label">Data Type:</div>
+                    <div class="info"><%= field.dataType %></div>
+                  </div>
+                <% elsif field.fieldType != 'Person' %>
+                  <div class="field-wrapper">
+                    <span>Not marked for persistence</span>
+                  </div>
+                <% end %>
+                <% if field.identifier && field.fieldType == 'Person' %>
+                  <div class="field-wrapper">
+                    <strong>Event Person Identifier</strong>
+                  </div>
+                <% end %>
               </div>
+              <hr>
             <% end %>
           </div>
         </div>
