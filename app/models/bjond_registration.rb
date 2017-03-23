@@ -1,5 +1,6 @@
 include BjondApi
 require 'attr_encrypted'
+require 'resolv'
 
 class BjondRegistration < ActiveRecord::Base
   has_many :bjond_services, :dependent => :destroy
