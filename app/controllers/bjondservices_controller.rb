@@ -72,6 +72,7 @@ class BjondservicesController < ApplicationController
   end
 
   def get_group_configuration
+    # use params[:groupid] to further narrow service request. (Service has group_id, registration does not.)
     bjond_registration = get_registration
     payload = BjondApi::BjondAppConfig.instance.get_group_configuration(bjond_registration)
     render :json => jwt_encode_payload(payload.to_json, bjond_registration)
@@ -91,6 +92,19 @@ class BjondservicesController < ApplicationController
     end
     ap registration
     return registration
+  end
+
+  def get_user_configuration
+    bjond_registration = get_registration
+    payload = BjondApi::BjondAppConfig.instance.get_user_configuration(bjond_registration)
+    render :json => jwt_encode_payload(payload.to_json, bjond_registration)
+  end
+
+  def get_user_schema
+    puts 'get_user_schema'
+    bjond_registration = get_registration
+    payload = jwt_encode_payload(BjondApi::BjondAppConfig.instance.user_configuration_schema, bjond_registration)
+    render :json => payload
   end
 
   # Only allow a trusted parameter "white list" through.
