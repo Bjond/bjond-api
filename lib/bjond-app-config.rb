@@ -8,11 +8,11 @@ module BjondApi
 
     self.instance.encryption_key_name = 'APP_ENCRYPTION_KEY'
 
-    def configure_group(config, bjond_registration)
+    def configure_group(config, bjond_registration, group_id)
       puts '[ App group configuration method not implemented. This can be set via BjondAppConfig.instance.configure_group ]'
     end
 
-    def get_group_configuration(bjond_registration)
+    def get_group_configuration(bjond_registration, group_id)
       puts '[ get_group_configuration method not implemented. This can be set via BjondAppConfig.instance.get_group_configuration ]'
     end
 

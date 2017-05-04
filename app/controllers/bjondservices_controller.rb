@@ -59,7 +59,7 @@ class BjondservicesController < ApplicationController
     puts 'configure_group_endpoint'
     bjond_registration = get_registration
     result = jwt_decode_payload_and_return_json(request.raw_post, bjond_registration)
-    BjondApi::BjondAppConfig.instance.configure_group(result, bjond_registration)
+    BjondApi::BjondAppConfig.instance.configure_group(result, bjond_registration, params[:groupid])
     render :json => {
       :status => 'OK'
     }.to_json
@@ -72,9 +72,8 @@ class BjondservicesController < ApplicationController
   end
 
   def get_group_configuration
-    # use params[:groupid] to further narrow service request. (Service has group_id, registration does not.)
     bjond_registration = get_registration
-    payload = BjondApi::BjondAppConfig.instance.get_group_configuration(bjond_registration)
+    payload = BjondApi::BjondAppConfig.instance.get_group_configuration(bjond_registration, params[:groupid])
     render :json => jwt_encode_payload(payload.to_json, bjond_registration)
   end
 
