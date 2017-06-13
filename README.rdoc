@@ -55,7 +55,13 @@ From your angular app, include our module as a dependency -
 
 - (5b) The generator will also create a root config create a config file that will initialize important variables for the Bjond-App gem. This will be copied into your app at: config/initializers/bjond-api-initializer.rb
 
-(6) Set-up Encryption Key
+(6) The angular / css can be loaded by using the following code in the application.html.erb: 
+
+    <div class="bjond-application" ng-app="bjond-app">
+      <%= yield %>
+    </div>
+
+(7) Set-up Encryption Key
 
 For security, the encryption keys stored from Bjond Server are themselves encrypted. Define the following environment variable: APP_ENCRYPTION_KEY. If you have multiple apps in your environment, you can modify the name of this constant using BjondApi::BjondAppConfig.instance.encryption_key_name. 
 
