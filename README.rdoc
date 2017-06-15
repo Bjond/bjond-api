@@ -53,6 +53,10 @@ From your angular app, include our module as a dependency -
 
     angular.module('your-app',['bjond-api']);
 
+From application.css, require the core css: 
+
+    *= require 'bjond_registrations'
+
 - (5b) The generator will also create a root config create a config file that will initialize important variables for the Bjond-App gem. This will be copied into your app at: config/initializers/bjond-api-initializer.rb
 
 (6) The angular / css can be loaded by using the following code in the application.html.erb: 
@@ -82,6 +86,14 @@ Other environment variables that will need to be set include:
 and 
 
     BJOND_ADAPTER_AUDIENCE
+
+(8) Set URL Options. In `development.rb`, set your local development options:
+
+      config.action_controller.default_url_options = {
+        :host => "localhost:3002",
+        :root_url => "http://localhost:3002"
+      }
+
 
 == Routes
 
