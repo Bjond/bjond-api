@@ -122,6 +122,6 @@ For more information on the default routes, check-out the gem's route page[https
 
 == Essential Schema
 
-![fullsizerender 2](https://user-images.githubusercontent.com/868768/27399560-2d0fe7fc-568b-11e7-8762-49f2cd24ac96.jpg)
+https://user-images.githubusercontent.com/868768/27399560-2d0fe7fc-568b-11e7-8762-49f2cd24ac96.jpg
 
 Most likely, your app schema will have additional configuration tables that are specific to the business logic of the adapter.
