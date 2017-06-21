@@ -49,6 +49,8 @@ In application.js, include scripts using -
 
     //= require bjond-api
 
+Also, remove references to turbolinks.
+
 From your angular app, include our module as a dependency - 
 
     angular.module('your-app',['bjond-api']);
@@ -118,4 +120,8 @@ For more information on the default routes, check-out the gem's route page[https
 - BJOND_ADAPTER_AUDIENCE
 - BJOND_ADAPTER_SUBJECT
 
+== Essential Schema
 
+![fullsizerender 2](https://user-images.githubusercontent.com/868768/27399560-2d0fe7fc-568b-11e7-8762-49f2cd24ac96.jpg)
+
+Most likely, your app schema will have additional configuration tables that are specific to the business logic of the adapter.
