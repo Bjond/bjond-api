@@ -43,5 +43,17 @@ module BjondApi
     return connections
   end
 
+  def fire_event_for_group(bjond_registration, payload, event_id, group_id)
+    puts "Fire event for group #{group_id}"
+    bjond_svc = BjondService.find_by_group_id_and_bjond_registration_id(group_id, bjond_registration.id)
+    url = bjond_svc.endpoint + "/#{event_id}"
+    puts "Creating connection to #{url}"
+    conn = Faraday.new(:url => url)
+    conn.post do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = BjondJwt::jwt_encode_payload(payload, bjond_registration)
+    end
+  end
+
 end
 
